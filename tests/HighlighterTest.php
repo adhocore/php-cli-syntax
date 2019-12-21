@@ -19,7 +19,7 @@ class HighlighterTest extends TestCase
 
     public function testHighlightFile()
     {
-        $code = Highlighter::for(__DIR__ . '/../example.php')->highlight();
+        $code = (string) Highlighter::for(__DIR__ . '/../example.php');
 
         $this->assertSame(\file_get_contents(__DIR__ . '/example.phps'), $code);
     }
