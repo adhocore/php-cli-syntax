@@ -1,5 +1,14 @@
 [0;32;40m<?php
 
+[0m[1;30;40m/*
+ * This file is part of the CLI-SYNTAX package.
+ *
+ * (c) Jitendra Adhikari <jiten.adhikary@gmail.com>
+ *     <https://github.com/adhocore>
+ *
+ * Licensed under MIT license.
+ */
+
 [0m[0;36;40muse [0m[0;32;40mAhc[0m[0;36;40m\[0m[0;32;40mCliSyntax[0m[0;36;40m\[0m[0;32;40mHighlighter[0m[0;36;40m;
 
 require_once [0m[0;32;40m__DIR__ [0m[0;36;40m. [0m[0;33;40m'/src/Highlighter.php'[0m[0;36;40m;
