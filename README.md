@@ -19,11 +19,16 @@ use Ahc\CliSyntax\Highlighter;
 
 // PHP code
 echo new Highlighter('<?php echo "Hello world!";');
+// OR
+echo (new Highlighter)->highlight('<?php echo "Hello world!";');
 
 // PHP file
 echo Highlighter::for('/path/to/file.php');
 ```
 
+See [example](./example.php). Here's the screenshot too:
+
+![adhocore/cli-syntax](https://imgur.com/wcNp3qJ.png)
 
 ## Contributing
 
