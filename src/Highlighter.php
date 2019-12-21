@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ahc\CliSyntax;
 
 class Highlighter
@@ -10,9 +12,9 @@ class Highlighter
     /** @var bool Indicates if it has been already configured. */
     protected static $configured;
 
-    public function __construct(string $code)
+    public function __construct(string $code = null)
     {
-        $this->code = $code;
+        $this->code = $code ?? '';
     }
 
     public function __toString(): string
@@ -29,11 +31,11 @@ class Highlighter
         return new static(\file_get_contents($file));
     }
 
-    public function highlight(): string
+    public function highlight(string $code = null): string
     {
         static::configure();
 
-        $html = \highlight_string($this->code, true);
+        $html = \highlight_string($code ?? $this->code, true);
         $html = \str_replace(['<br />', '<br/>', '<br>'], "\n", $html);
 
         return $this->parse($html);
