@@ -1,5 +1,5 @@
 {
-    "name": "adhocore/php-cli-syntax",
+    "name": "adhocore/cli-syntax",
     "description": "PHP Code Syntax Highlighter for CLI",
     "type": "library",
     "keywords": ["php", "cli-syntax", "php-cli-highlight", "cli-syntax-highlight", "syntax-highlight"],
