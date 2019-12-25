@@ -15,7 +15,7 @@ namespace Ahc\CliSyntax;
 
 class Exporter extends Pretty
 {
-    /** @var integer Font size */
+    /** @var int Font size */
     protected $size = 16;
 
     /** @var string Font path */
@@ -68,7 +68,7 @@ class Exporter extends Pretty
         $text   = \str_replace(['&nbsp;', '&lt;', '&gt;'], [' ', '<', '>'], $el->textContent);
 
         foreach (\explode("\n", \rtrim($text, "\r\n")) as $line) {
-            ++$lineNo;
+            $lineNo++;
 
             $xlen = static::$lengths[$lineNo] ?? 0;
             $xpos = 12 + $xlen;
