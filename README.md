@@ -44,6 +44,13 @@ See [example usage](./example.php). Here's how the export looks like:
 
 ![adhocore/cli-syntax](./example.png)
 
+
+### Customisation
+
+If you would like to change color etc, extend the classes
+[`Highlighter`](./src/Highlighter.php) and [`Exporter`](./src/Exporter.php),
+then override `visit()` method which recieves [`DOMElement`](https://php.net/DOMElement).
+
 ## Contributing
 
 Please check [the guide](./CONTRIBUTING.md).
