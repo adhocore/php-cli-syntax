@@ -14,6 +14,11 @@ composer require adhocore/cli-syntax
 ```
 
 ## Usage
+
+You can either highlight PHP code in CLI or export to png image.
+
+### Highlight
+
 ```php
 use Ahc\CliSyntax\Highlighter;
 
@@ -26,9 +31,18 @@ echo (new Highlighter)->highlight('<?php echo "Hello world!";');
 echo Highlighter::for('/path/to/file.php');
 ```
 
-See [example](./example.php). Here's the screenshot too:
+### Export
 
-![adhocore/cli-syntax](https://imgur.com/wcNp3qJ.png)
+```php
+use Ahc\CliSyntax\Exporter;
+
+// PHP file
+Exporter::for('/path/to/file.php')->export('file.png');
+```
+
+See [example usage](./example.php). Here's how the export looks like:
+
+![adhocore/cli-syntax](./example.png)
 
 ## Contributing
 
