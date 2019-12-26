@@ -6,3 +6,5 @@
 composer.lock
 coverage.xml
 clover.xml
+test.php
+*.ttf.png
