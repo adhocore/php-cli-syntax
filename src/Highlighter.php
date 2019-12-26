@@ -25,14 +25,17 @@ class Highlighter extends Pretty
 
     public function highlight(string $code = null): string
     {
-        $this->out = '';
-
         $this->parse($code);
 
-        return $this->out;
+        return \trim($this->out, "\n") . "\n";
     }
 
-    protected function visit(\DOMElement $el)
+    protected function reset()
+    {
+        $this->out = '';
+    }
+
+    protected function visit(\DOMNode $el)
     {
         static $formats = [
             'comment' => "\033[0;34;40m%s\033[0m",
@@ -41,8 +44,9 @@ class Highlighter extends Pretty
             'string'  => "\033[0;33;40m%s\033[0m",
         ];
 
+        $type = $el instanceof \DOMElement ? $el->getAttribute('data-type') : 'raw';
         $text = \str_replace(['&nbsp;', '&lt;', '&gt;'], [' ', '<', '>'], $el->textContent);
 
-        $this->out .= \sprintf($formats[$el->getAttribute('data-type')] ?? '%s', $text);
+        $this->out .= \sprintf($formats[$type] ?? '%s', $text);
     }
 }
