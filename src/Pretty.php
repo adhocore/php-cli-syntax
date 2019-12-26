@@ -50,20 +50,26 @@ abstract class Pretty
 
     protected function parse(string $code = null)
     {
-        static::configure();
-
-        $html = \highlight_string($code ?? $this->code, true);
-        $html = \str_replace('<br />', "\n", $html);
+        $this->reset();
 
         $dom = new \DOMDocument;
-        $dom->loadHTML($html);
+        $dom->loadHTML($this->codeToHtml($code));
 
-        foreach ($dom->getElementsByTagName('span') as $el) {
-            if ('html' !== $el->getAttribute('data-type')) {
-                $this->visit($el);
-            }
+        foreach ((new \DOMXPath($dom))->query('/html/body/span')[0]->childNodes as $el) {
+            $this->visit($el);
         }
     }
 
-    abstract protected function visit(\DOMElement $el);
+    protected function codeToHtml(string $code = null): string
+    {
+        static::configure();
+
+        $html = \highlight_string($code ?? $this->code, true);
+
+        return \str_replace(['<br />', '<code>', '</code>'], ["\n", '', ''], $html);
+    }
+
+    abstract protected function reset();
+
+    abstract protected function visit(\DOMNode $el);
 }
