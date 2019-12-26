@@ -49,7 +49,7 @@ See [example usage](./example.php). Here's how the export looks like:
 
 If you would like to change color etc, extend the classes
 [`Highlighter`](./src/Highlighter.php) and [`Exporter`](./src/Exporter.php),
-then override `visit()` method which recieves [`DOMElement`](https://php.net/DOMElement).
+then override `visit()` method which recieves [`DOMNode`](https://php.net/DOMNode).
 
 ## Contributing
 
