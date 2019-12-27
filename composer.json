@@ -41,6 +41,6 @@
     "bin": ["bin/clish"],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test:cov": "vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml"
+        "test:cov": "vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml --coverage-html vendor/cov"
     }
 }
