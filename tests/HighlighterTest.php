@@ -20,8 +20,8 @@ class HighlighterTest extends TestCase
     {
         $code = (new Highlighter)->highlight('<?php echo "Hello world!";');
 
-        $this->assertSame(
-            '[0;32;40m<?php [0m[0;36;40mecho [0m[0;33;40m"Hello world!"[0m[0;36;40m;[0m',
+        $this->assertContains(
+            '[0;32;40m<?php [0m[0;31;40mecho [0m[0;33;40m"Hello world!"[0m[0;31;40m;[0m',
             $code
         );
     }
