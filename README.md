@@ -9,13 +9,30 @@
 
 
 ## Installation
+
+### As standalone binary
+
+```sh
+composer global require adhocore/cli-syntax
+
+# then you will be able to run it as
+clish -h
+clish -f file.php
+echo '<?php date("Ymd");' | clish
+cat file.php | clish
+
+# export png
+clish -f file.php -o file.png
+```
+
+### As project dependency
 ```bash
 composer require adhocore/cli-syntax
 ```
 
 ## Usage
 
-You can either highlight PHP code in CLI or export to png image.
+You can either highlight PHP code in terminal output or export to png image.
 
 ### Highlight
 
