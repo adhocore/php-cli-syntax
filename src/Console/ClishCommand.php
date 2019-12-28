@@ -66,9 +66,8 @@ class ClishCommand extends Command
     public function execute()
     {
         $code = $this->file ? \file_get_contents($this->file) : $this->code;
-        $code = \trim($code);
 
-        if ('' === $code) {
+        if ('' === \trim($code)) {
             return;
         }
 
@@ -79,7 +78,7 @@ class ClishCommand extends Command
     protected function doHighlight(string $code = null)
     {
         if (!$this->output || $this->echo) {
-            echo new Highlighter($code);
+            $this->app()->io()->raw((string) new Highlighter($code));
         }
     }
 
