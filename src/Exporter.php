@@ -42,6 +42,10 @@ class Exporter extends Pretty
 
     public function export(string $output, array $options = [])
     {
+        if (!\is_dir(\dirname($output))) {
+            throw new \InvalidArgumentException('The output path doesnot exist.');
+        }
+
         $this->setOptions($options);
 
         $this->imgSize = $this->estimateSize($this->code);
