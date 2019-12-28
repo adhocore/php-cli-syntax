@@ -1,3 +1,42 @@
+## [0.2.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.2.0) (2019-12-28)
+
+### Features
+- **Bin**: Add clish entrypoint (Jitendra Adhikari) [_b6dfe0f_](https://github.com/adhocore/php-cli-syntax/commit/b6dfe0f)
+- **Console**: Add clish command (Jitendra Adhikari) [_1a36015_](https://github.com/adhocore/php-cli-syntax/commit/1a36015)
+- **Pretty**: Use domxpath, add reset() and codeToHtml() (Jitendra Adhikari) [_aa65e14_](https://github.com/adhocore/php-cli-syntax/commit/aa65e14)
+- Add png Exporter class (Jitendra Adhikari) [_494c4a0_](https://github.com/adhocore/php-cli-syntax/commit/494c4a0)
+- Add abstract base Pretty class (Jitendra Adhikari) [_09feb82_](https://github.com/adhocore/php-cli-syntax/commit/09feb82)
+
+### Bug Fixes
+- **Clish**: Phar name (Jitendra Adhikari) [_6499722_](https://github.com/adhocore/php-cli-syntax/commit/6499722)
+- **Exporter**: Validate output dir (Jitendra Adhikari) [_bd8e3e7_](https://github.com/adhocore/php-cli-syntax/commit/bd8e3e7)
+- **Clish**: Phar name (Jitendra Adhikari) [_c82c585_](https://github.com/adhocore/php-cli-syntax/commit/c82c585)
+
+### Internal Refactors
+- **Clish.cmd**: Dont trim input, use writer instead of echo (Jitendra Adhikari) [_e30bd02_](https://github.com/adhocore/php-cli-syntax/commit/e30bd02)
+- **Exporter**: No static, add setOptions, reset, refactor visit (Jitendra Adhikari) [_6a38fd4_](https://github.com/adhocore/php-cli-syntax/commit/6a38fd4)
+- **Highlighter**: Implement reset(), refactor visit() (Jitendra Adhikari) [_e6d6b4e_](https://github.com/adhocore/php-cli-syntax/commit/e6d6b4e)
+- Extend Pretty, cleanup redundant (Jitendra Adhikari) [_772c3d7_](https://github.com/adhocore/php-cli-syntax/commit/772c3d7)
+
+### Miscellaneous
+- Update test:cov (Jitendra Adhikari) [_285182f_](https://github.com/adhocore/php-cli-syntax/commit/285182f)
+- Update example output (Jitendra Adhikari) [_4867ec3_](https://github.com/adhocore/php-cli-syntax/commit/4867ec3)
+- **Composer**: Add keywords, use adhocore/cli, register clish (Jitendra Adhikari) [_3652e5f_](https://github.com/adhocore/php-cli-syntax/commit/3652e5f)
+- Chmod +x clish (Jitendra Adhikari) [_3982889_](https://github.com/adhocore/php-cli-syntax/commit/3982889)
+- Update gitignore (Jitendra Adhikari) [_c0f09e1_](https://github.com/adhocore/php-cli-syntax/commit/c0f09e1)
+- Add more fonts (Jitendra Adhikari) [_0184d40_](https://github.com/adhocore/php-cli-syntax/commit/0184d40)
+- Add export example image output (Jitendra Adhikari) [_eb2ef0f_](https://github.com/adhocore/php-cli-syntax/commit/eb2ef0f)
+- Add export example (Jitendra Adhikari) [_8f88fa9_](https://github.com/adhocore/php-cli-syntax/commit/8f88fa9)
+- Require gd ext (Jitendra Adhikari) [_c41b11c_](https://github.com/adhocore/php-cli-syntax/commit/c41b11c)
+- Add dejavu font (Jitendra Adhikari) [_0927f75_](https://github.com/adhocore/php-cli-syntax/commit/0927f75)
+
+### Documentations
+- Add global installation docs (Jitendra Adhikari) [_ddcbfd4_](https://github.com/adhocore/php-cli-syntax/commit/ddcbfd4)
+- About extension (Jitendra Adhikari) [_32aa562_](https://github.com/adhocore/php-cli-syntax/commit/32aa562)
+- Add customisation info (Jitendra Adhikari) [_9565097_](https://github.com/adhocore/php-cli-syntax/commit/9565097)
+- Add export usage (Jitendra Adhikari) [_d91624f_](https://github.com/adhocore/php-cli-syntax/commit/d91624f)
+
+
 ## [0.1.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.1.0) (2019-12-21)
 
 ### Features
@@ -23,6 +62,3 @@
 
 ### Builds
 - **Travis**: Add travis yml (Jitendra Adhikari) [_e75bee9_](https://github.com/adhocore/php-cli-syntax/commit/e75bee9)
-
-
-
