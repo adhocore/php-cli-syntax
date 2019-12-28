@@ -44,7 +44,7 @@ class ClishCommand extends Command
 
     public function interact(Interactor $io)
     {
-        if ($this->file) {
+        if (\is_string($this->file)) {
             return;
         }
 
