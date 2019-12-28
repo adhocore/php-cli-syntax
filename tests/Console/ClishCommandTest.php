@@ -15,7 +15,6 @@ use Ahc\Cli\Application;
 use Ahc\Cli\IO\Interactor;
 use Ahc\Cli\Test\CliTestCase;
 use Ahc\CliSyntax\Console\ClishCommand;
-use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../../vendor/adhocore/cli/tests/CliTestCase.php';
 
@@ -32,7 +31,8 @@ class ClishCommandTest extends CliTestCase
         parent::setUp();
         \touch(static::$in);
 
-        $this->app = (new Application('clish', 'test', function () {}))->add(new ClishCommand, 'c', true);
+        $this->app = (new Application('clish', 'test', function () {
+        }))->add(new ClishCommand, 'c', true);
         $this->app->io(new Interactor(static::$in, static::$ou));
     }
 
