@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+if (\PHP_VERSION_ID < 70000) {
+    echo "clish requires PHP7.0 or newer\n";
+
+    exit(1);
+}
+
+if (\Phar::running() && !\extension_loaded('zlib')) {
+    echo "clish.phar requires 'zlib' extension\n(OR you can compile phar with `compression: NONE` in box.json)\n";
+
+    exit(1);
+}
+
+if (\file_exists(__DIR__ . '/../../../autoload.php')) {
+    require __DIR__ . '/../../../autoload.php';
+} elseif (\file_exists(__DIR__ . '/../../autoload.php')) {
+    require __DIR__ . '/../../autoload.php';
+} else {
+    require __DIR__ . '/../vendor/autoload.php';
+}
+
+\chdir(\getcwd());
+
+$logo = "
+        _   _          _
+  ___  | | (_)  ___   | |__
+ / __| | | | | / __|  '  _  \
+| (__  | | | | \___ \ | | | |
+ \___| |_| |_| |____/ |_| |_|
+
+PHP CLI Syntax Highlight Tool
+=============================
+";
+
+$app = new Ahc\Cli\Application(
+    'Clish',
+    \trim(\file_get_contents(__DIR__ . '/../VERSION'))
+);
+
+// Add commands and their aliases
+$app->add(new Ahc\CliSyntax\Console\ClishCommand, 'c', true);
+
+$app->logo($logo)->handle($_SERVER['argv'] + ['', 'clish']);

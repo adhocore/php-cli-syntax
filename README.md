@@ -9,11 +9,33 @@
 
 
 ## Installation
+
+### As standalone binary
+
+```sh
+composer global require adhocore/cli-syntax
+
+# then you will be able to run it as
+clish -h
+clish -f file.php
+echo '<?php date("Ymd");' | clish
+cat file.php | clish
+
+# export png
+clish -f file.php -o file.png
+```
+
+### As project dependency
 ```bash
 composer require adhocore/cli-syntax
 ```
 
 ## Usage
+
+You can either highlight PHP code in terminal output or export to png image.
+
+### Highlight
+
 ```php
 use Ahc\CliSyntax\Highlighter;
 
@@ -26,9 +48,25 @@ echo (new Highlighter)->highlight('<?php echo "Hello world!";');
 echo Highlighter::for('/path/to/file.php');
 ```
 
-See [example](./example.php). Here's the screenshot too:
+### Export
 
-![adhocore/cli-syntax](https://imgur.com/wcNp3qJ.png)
+```php
+use Ahc\CliSyntax\Exporter;
+
+// PHP file
+Exporter::for('/path/to/file.php')->export('file.png');
+```
+
+See [example usage](./example.php). Here's how the export looks like:
+
+![adhocore/cli-syntax](./example.png)
+
+
+### Customisation
+
+If you would like to change color etc, extend the classes
+[`Highlighter`](./src/Highlighter.php) and [`Exporter`](./src/Exporter.php),
+then override `visit()` method which recieves [`DOMNode`](https://php.net/DOMNode).
 
 ## Contributing
 
