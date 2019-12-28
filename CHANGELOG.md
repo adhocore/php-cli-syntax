@@ -1,3 +1,9 @@
+## [0.2.1](https://github.com/adhocore/php-cli-syntax/releases/tag/0.2.1) (2019-12-28)
+
+### Bug Fixes
+- **Clish.cmd**: Ensure file is str (Jitendra Adhikari) [_5509140_](https://github.com/adhocore/php-cli-syntax/commit/5509140)
+
+
 ## [0.2.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.2.0) (2019-12-28)
 
 ### Features
