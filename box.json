@@ -1,0 +1,20 @@
+{
+    "chmod": "0755",
+
+    "check-requirements": false,
+
+    "banner": [
+        "Clish is a PHP code highlight and/or export tool."
+    ],
+
+    "files": [
+        "VERSION"
+    ],
+
+    "directories-bin": [
+        "font"
+    ],
+
+    "compression": "GZ",
+    "datetime": "release-date"
+}
