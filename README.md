@@ -10,19 +10,18 @@
 
 ## Installation
 
+### As phar binary
+
+```sh
+curl -SsLo ~/clish.phar https://github.com/adhocore/php-cli-syntax/releases/latest/download/clish.phar
+
+chmod +x ~/clish.phar && sudo ln -s ~/clish /usr/local/bin/clish
+```
+
 ### As standalone binary
 
 ```sh
 composer global require adhocore/cli-syntax
-
-# then you will be able to run it as
-clish -h
-clish -f file.php
-echo '<?php date("Ymd");' | clish
-cat file.php | clish
-
-# export png
-clish -f file.php -o file.png
 ```
 
 ### As project dependency
@@ -32,9 +31,54 @@ composer require adhocore/cli-syntax
 
 ## Usage
 
+### Shell command
+
+If you installed as binary following any of the above methods, then:
+
+```sh
+# you will be able to run it as
+clish -h
+clish -f file.php
+echo '<?php date("Ymd");' | clish
+cat file.php | clish
+
+# export png
+clish -f file.php -o file.png
+```
+
+> `clish` stands for CLI syntax highlight.
+
+#### Options
+
+Parameter options.
+
+```
+  [-e|--echo]         Forces echo to STDOUT when --output is passed
+  [-f|--file]         Input PHP file to highlight and/or export
+                      (will read from piped input if file not given)
+  [-F|--font]         Font to use for export to png
+  [-h|--help]         Show help
+  [-o|--output]       Output filepath where PNG image is exported
+  [-v|--verbosity]    Verbosity level
+  [-V|--version]      Show version
+```
+
+##### Examples
+
+```sh
+  bin/clish --file file.php                           # print
+  cat file.php | bin/clish                            # from piped stream
+  bin/clish < file.php                                # from redirected stdin
+  bin/clish --file file.php --output file.png         # export
+  bin/clish --file file.php --output file.png --echo  # print + export
+  bin/clish -f file.php -o file.png -F dejavu         # export in dejavu font
+```
+
+### Programatically
+
 You can either highlight PHP code in terminal output or export to png image.
 
-### Highlight
+#### Highlight
 
 ```php
 use Ahc\CliSyntax\Highlighter;
@@ -48,7 +92,7 @@ echo (new Highlighter)->highlight('<?php echo "Hello world!";');
 echo Highlighter::for('/path/to/file.php');
 ```
 
-### Export
+#### Export
 
 ```php
 use Ahc\CliSyntax\Exporter;
@@ -62,7 +106,7 @@ See [example usage](./example.php). Here's how the export looks like:
 ![adhocore/cli-syntax](./example.png)
 
 
-### Customisation
+## Customisation
 
 If you would like to change color etc, extend the classes
 [`Highlighter`](./src/Highlighter.php) and [`Exporter`](./src/Exporter.php),
@@ -76,7 +120,7 @@ Please check [the guide](./CONTRIBUTING.md).
 
 > &copy; [MIT](./LICENSE) | 2019, Jitendra Adhikari
 
-### Credits
+## Credits
 
 This project is bootstrapped by [phint](https://github.com/adhocore/phint)
 and releases managed by [please](https://github.com/adhocore/please).
