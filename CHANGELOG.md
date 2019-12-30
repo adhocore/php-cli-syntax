@@ -1,3 +1,17 @@
+## [0.3.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.3.0) (2019-12-30)
+
+### Bug Fixes
+- **Clish.cmd**: Usage msg, font path in phar (Jitendra Adhikari) [_cef8caa_](https://github.com/adhocore/php-cli-syntax/commit/cef8caa)
+
+### Internal Refactors
+- Invert font check logic (Jitendra Adhikari) [_1b8cda0_](https://github.com/adhocore/php-cli-syntax/commit/1b8cda0)
+
+### Miscellaneous
+- Bump cli (Jitendra Adhikari) [_a684003_](https://github.com/adhocore/php-cli-syntax/commit/a684003)
+- **Clish**: Check gd extension (Jitendra Adhikari) [_16d7689_](https://github.com/adhocore/php-cli-syntax/commit/16d7689)
+- **Phar**: Add box.json (Jitendra Adhikari) [_048eb60_](https://github.com/adhocore/php-cli-syntax/commit/048eb60)
+
+
 ## [0.2.1](https://github.com/adhocore/php-cli-syntax/releases/tag/0.2.1) (2019-12-28)
 
 ### Bug Fixes
