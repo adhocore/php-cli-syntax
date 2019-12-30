@@ -68,13 +68,14 @@ class Exporter extends Pretty
             return;
         }
 
-        $font = $options['font'];
-        if (!\is_file($font)) {
-            $basename = \basename($font, '.ttf');
-            $font     = __DIR__ . "/../font/$basename.ttf";
+        if (\is_file($options['font'])) {
+            $this->font = $options['font'];
+
+            return;
         }
 
-        if (!\is_file($font)) {
+        $base = \basename($options['font'], '.ttf');
+        if (!\is_file($font = __DIR__ . "/../font/$base.ttf")) {
             throw new \InvalidArgumentException('The given font doesnot exist.');
         }
 
