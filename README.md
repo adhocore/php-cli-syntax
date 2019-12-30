@@ -15,14 +15,16 @@
 ```sh
 curl -SsLo ~/clish.phar https://github.com/adhocore/php-cli-syntax/releases/latest/download/clish.phar
 
-chmod +x ~/clish.phar && sudo ln -s ~/clish /usr/local/bin/clish
+chmod +x ~/clish.phar && sudo ln -s ~/clish.phar /usr/local/bin/clish
 ```
+> Follow same steps to upgrade.
 
 ### As standalone binary
 
 ```sh
 composer global require adhocore/cli-syntax
 ```
+> Follow same steps to upgrade.
 
 ### As project dependency
 ```bash
