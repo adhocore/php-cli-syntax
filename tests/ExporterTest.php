@@ -51,6 +51,14 @@ class ExporterTest extends TestCase
         // $this->assertSame(\file_get_contents($this->ref), \file_get_contents($this->out));
     }
 
+    public function testSetOptionsFont()
+    {
+        Exporter::for(__DIR__ . '/../example.php')->export($this->out, ['font' => __DIR__ . '/../font/dejavu.ttf']);
+
+        $this->assertFileExists($this->out, 'It should export with given font');
+        // $this->assertSame(\file_get_contents($this->ref), \file_get_contents($this->out));
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The given font doesnot exist.
