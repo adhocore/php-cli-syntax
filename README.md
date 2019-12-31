@@ -8,6 +8,17 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](./LICENSE)
 
 
+```
+        _   _          _
+  ___  | | (_)  ___   | |__
+ / __| | | | | / __|  '  _  \
+| (__  | | | | \___ \ | | | |
+ \___| |_| |_| |____/ |_| |_|
+
+PHP CLI Syntax Highlight Tool
+=============================
+```
+
 ## Installation
 
 ### As phar binary
