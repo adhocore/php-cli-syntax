@@ -1,3 +1,14 @@
+## [0.3.1](https://github.com/adhocore/php-cli-syntax/releases/tag/0.3.1) (2019-12-31)
+
+### Miscellaneous
+- **Travis**: Script (Jitendra Adhikari) [_d0ef38d_](https://github.com/adhocore/php-cli-syntax/commit/d0ef38d)
+- **Composer**: Tweak script.test (Jitendra Adhikari) [_8df0473_](https://github.com/adhocore/php-cli-syntax/commit/8df0473)
+
+### Documentations
+- Add clish ascii art (Jitendra Adhikari) [_5b7c713_](https://github.com/adhocore/php-cli-syntax/commit/5b7c713)
+- Improve (Jitendra Adhikari) [_08b2b32_](https://github.com/adhocore/php-cli-syntax/commit/08b2b32)
+
+
 ## [0.3.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.3.0) (2019-12-30)
 
 ### Bug Fixes
