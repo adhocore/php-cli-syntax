@@ -90,7 +90,6 @@ abstract class Pretty
         $html = \highlight_string($code, true);
 
         return \str_replace(['<br />'], ["\n"], $html);
-        return \str_replace(['<br />', '<code>', "\n</code>"], ["\n", '', ''], $html);
     }
 
     protected function formatLineNo(): string
