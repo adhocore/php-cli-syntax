@@ -53,7 +53,10 @@ class ExporterTest extends TestCase
 
     public function testSetOptionsFont()
     {
-        Exporter::for(__DIR__ . '/../example.php')->export($this->out, ['font' => __DIR__ . '/../font/dejavu.ttf']);
+        Exporter::for(__DIR__ . '/../example.php')->export(
+            $this->out,
+            ['font' => __DIR__ . '/../font/dejavu.ttf', 'lineNo' => true]
+        );
 
         $this->assertFileExists($this->out, 'It should export with given font');
         // $this->assertSame(\file_get_contents($this->ref), \file_get_contents($this->out));

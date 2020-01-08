@@ -26,6 +26,16 @@ class HighlighterTest extends TestCase
         );
     }
 
+    public function testHighlightCodeWithLineNo()
+    {
+        $code = (new Highlighter)->highlight('<?php echo "Hello world!";', ['lineNo' => true]);
+
+        $this->assertContains(
+            '[2;36;40m1. [0m[0;32;40m<?php [0m[0;31;40mecho [0m[0;33;40m"Hello world!"[0m[0;31;40m;[0m',
+            $code
+        );
+    }
+
     public function testHighlightFile()
     {
         $code = (string) Highlighter::for(__DIR__ . '/../example.php');

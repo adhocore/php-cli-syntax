@@ -27,6 +27,7 @@ class ClishCommand extends Command
         $this
             ->option('-o --output', 'Output filepath where PNG image is exported', null, '')
             ->option('-e --echo', 'Forces echo to STDOUT when --output is passed', null, '')
+            ->option('-l --with-line-no', 'Highlight with line number')
             ->option('-f --file', \implode("\n", [
                 'Input PHP file to highlight and/or export',
                 '(will read from piped input if file not given)',
@@ -38,6 +39,7 @@ class ClishCommand extends Command
                 . '<bold>  $0</end> <comment>< file.php</end> ## from redirected stdin<eol/>'
                 . '<bold>  $0</end> <comment>--file file.php --output file.png</end> ## export<eol/>'
                 . '<bold>  $0</end> <comment>--file file.php --output file.png --echo</end> ## print + export<eol/>'
+                . '<bold>  $0</end> <comment>--file file.php --with-line-no</end> ## print with lineno<eol/>'
                 . '<bold>  $0</end> <comment>-f file.php -o file.png -F dejavu</end> ## export in dejavu font<eol/>'
             );
     }
@@ -78,7 +80,7 @@ class ClishCommand extends Command
     protected function doHighlight(string $code = null)
     {
         if (!$this->output || $this->echo) {
-            $this->app()->io()->raw((string) new Highlighter($code));
+            $this->app()->io()->raw((new Highlighter)->highlight($code, ['lineNo' => $this->lineNo]));
         }
     }
 
@@ -92,7 +94,7 @@ class ClishCommand extends Command
             \mkdir(\dirname($this->output), 0755, true);
         }
 
-        $options = ['font' => $this->fixFont($this->font ?: 'ubuntu')];
+        $options = ['font' => $this->fixFont($this->font ?: 'ubuntu'), 'lineNo' => $this->lineNo];
 
         (new Exporter($code))->export($this->output, $options);
     }
