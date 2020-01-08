@@ -30,9 +30,6 @@ class Exporter extends Pretty
     /** @var array Colors cached for each types. */
     protected $colors = [];
 
-    /** @var array Lengths of each line */
-    protected $lengths = [];
-
     public function __destruct()
     {
         if (\is_resource($this->image)) {
@@ -48,8 +45,11 @@ class Exporter extends Pretty
 
         $this->setOptions($options);
 
-        $this->imgSize = $this->estimateSize($this->code);
-        $this->image   = \imagecreate($this->imgSize['x'] + 50, $this->imgSize['y'] + 25);
+        $this->imgSize   = $this->estimateSize($this->code);
+        $this->lineCount = \substr_count($this->code, "\n") ?: 1;
+
+        $padLineNo   = $this->withLineNo ? $this->estimateSize($this->formatLineNo())['x'] : 0;
+        $this->image = \imagecreate($this->imgSize['x'] + $padLineNo + 50, $this->imgSize['y'] + 25);
 
         \imagecolorallocate($this->image, 0, 0, 0);
 
@@ -60,6 +60,8 @@ class Exporter extends Pretty
 
     protected function setOptions(array $options)
     {
+        parent::setOptions($options);
+
         if (isset($options['size'])) {
             $this->size = $options['size'];
         }
@@ -90,28 +92,32 @@ class Exporter extends Pretty
         return ['x' => $box[2], 'y' => $box[1], 'y1' => \intval($box[1] / $eol)];
     }
 
-    protected function reset()
+    protected function doReset()
     {
-        $this->colors = $this->lengths = [];
+        $this->colors = [];
     }
 
     protected function visit(\DOMNode $el)
     {
-        $lineNo = $el->getLineNo() - 2;
         $type   = $el instanceof \DOMElement ? $el->getAttribute('data-type') : 'raw';
         $color  = $this->colorCode($type);
+        $ncolor = $this->colorCode('lineno');
         $text   = \str_replace(['&nbsp;', '&lt;', '&gt;'], [' ', '<', '>'], $el->textContent);
 
         foreach (\explode("\n", $text) as $line) {
-            $lineNo++;
+            $xlen = $this->lengths[$this->lineNo] ?? 0;
+            $ypos = 12 + $this->imgSize['y1'] * $this->lineNo;
 
-            $xlen = $this->lengths[$lineNo] ?? 0;
-            $xpos = 12 + $xlen;
-            $ypos = 12 + $this->imgSize['y1'] * $lineNo;
+            if ('' !== $lineNo = $this->formatLineNo()) {
+                $xlen += $this->estimateSize($lineNo)['x'];
+                \imagefttext($this->image, $this->size, 0, 12, $ypos, $ncolor, $this->font, $lineNo);
+            }
 
-            \imagefttext($this->image, $this->size, 0, $xpos, $ypos, $color, $this->font, $line);
+            \imagefttext($this->image, $this->size, 0, 12 + $xlen, $ypos, $color, $this->font, $line);
 
-            $this->lengths[$lineNo] = $xlen + $this->estimateSize($line)['x'];
+            $this->lengths[$this->lineNo] = $xlen + $this->estimateSize($line)['x'];
+
+            $this->lineNo++;
         }
     }
 
@@ -127,6 +133,7 @@ class Exporter extends Pretty
             'keyword' => [192, 0, 0],
             'string'  => [192, 192, 0],
             'raw'     => [128, 128, 128],
+            'lineno'  => [128, 224, 224],
         ];
 
         return $this->colors[$type] = \imagecolorallocate($this->image, ...$palette[$type]);
