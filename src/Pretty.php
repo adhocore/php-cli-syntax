@@ -18,6 +18,18 @@ abstract class Pretty
     /** @var string The PHP code. */
     protected $code;
 
+    /** @var int The current line number. */
+    protected $lineNo = 0;
+
+    /** @var int The total lines count. */
+    protected $lineCount = 0;
+
+    /** @var bool Show line numbers. */
+    protected $withLineNo = false;
+
+    /** @var array Lengths of each line */
+    protected $lengths = [];
+
     /** @var bool Indicates if it has been already configured. */
     protected static $configured;
 
@@ -48,28 +60,57 @@ abstract class Pretty
         static::$configured = true;
     }
 
+    protected function setOptions(array $options)
+    {
+        if ($options['lineNo'] ?? false) {
+            $this->withLineNo = true;
+        }
+    }
+
     protected function parse(string $code = null)
     {
         $this->reset();
 
         $dom = new \DOMDocument;
-        $dom->loadHTML($this->codeToHtml($code));
+        $dom->loadHTML($this->codeToHtml($code ?? $this->code));
 
-        foreach ((new \DOMXPath($dom))->query('/html/body/span')[0]->childNodes as $el) {
+        $adjust = -1;
+        foreach ((new \DOMXPath($dom))->query('/html/body/code/span/*') as $el) {
+            $this->lineNo = $el->getLineNo() + $adjust;
             $this->visit($el);
         }
     }
 
-    protected function codeToHtml(string $code = null): string
+    protected function codeToHtml(string $code): string
     {
         static::configure();
 
-        $html = \highlight_string($code ?? $this->code, true);
+        $this->lineCount = \substr_count($code, "\n") ?: 1;
 
-        return \str_replace(['<br />', '<code>', '</code>'], ["\n", '', ''], $html);
+        $html = \highlight_string($code, true);
+
+        return \str_replace(['<br />'], ["\n"], $html);
+        return \str_replace(['<br />', '<code>', "\n</code>"], ["\n", '', ''], $html);
     }
 
-    abstract protected function reset();
+    protected function formatLineNo(): string
+    {
+        if ($this->withLineNo && $this->lineNo <= $this->lineCount && !isset($this->lengths[$this->lineNo])) {
+            return \str_pad("$this->lineNo", \strlen("$this->lineCount"), ' ', \STR_PAD_LEFT) . '. ';
+        }
+
+        return '';
+    }
+
+    protected function reset()
+    {
+        $this->doReset();
+
+        $this->lengths = [];
+        $this->lineNo  = $this->lineCount = 0;
+    }
+
+    abstract protected function doReset();
 
     abstract protected function visit(\DOMNode $el);
 }
