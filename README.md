@@ -63,18 +63,18 @@ clish -f file.php -o file.png
 
 #### Options
 
-Parameter options.
+Parameter options:
 
 ```
-  [-e|--echo]         Forces echo to STDOUT when --output is passed
-  [-f|--file]         Input PHP file to highlight and/or export
-                      (will read from piped input if file not given)
-  [-F|--font]         Font to use for export to png
-  [-h|--help]         Show help
-  [-o|--output]       Output filepath where PNG image is exported
-  [-v|--verbosity]    Verbosity level
-  [-V|--version]      Show version
+  [-e|--echo]            Forces echo to STDOUT when --output is passed
+  [-f|--file]            Input PHP file to highlight and/or export
+                         (will read from piped input if file not given)
+  [-F|--font]            Font to use for export to png
+  [-l|--with-line-no]    Highlight with line number
+  [-o|--output]          Output filepath where PNG image is exported
 ```
+
+> Run `clish -h` to show help.
 
 ##### Examples
 
@@ -84,6 +84,7 @@ Parameter options.
   bin/clish < file.php                                # from redirected stdin
   bin/clish --file file.php --output file.png         # export
   bin/clish --file file.php --output file.png --echo  # print + export
+  bin/clish --file file.php --with-line-no            # print with lineno
   bin/clish -f file.php -o file.png -F dejavu         # export in dejavu font
 ```
 
@@ -118,6 +119,10 @@ See [example usage](./example.php). Here's how the export looks like:
 
 ![adhocore/cli-syntax](./example.png)
 
+---
+And with line numbers:
+
+![Example with line numbers](https://imgur.com/Jqiydf8.png)
 
 ## Customisation
 
