@@ -1,3 +1,20 @@
+## [0.4.0](https://github.com/adhocore/php-cli-syntax/releases/tag/0.4.0) (2020-01-08)
+
+### Features
+- **Clish.cmd**: Add --with-line-no option (Jitendra Adhikari) [_664c263_](https://github.com/adhocore/php-cli-syntax/commit/664c263)
+- **Highlighter**: Support lineno (Jitendra Adhikari) [_5ad19fa_](https://github.com/adhocore/php-cli-syntax/commit/5ad19fa)
+- **Exporter**: Support lineno (Jitendra Adhikari) [_dffe047_](https://github.com/adhocore/php-cli-syntax/commit/dffe047)
+- **Pretty**: Support line no, refactor reset() (Jitendra Adhikari) [_513095a_](https://github.com/adhocore/php-cli-syntax/commit/513095a)
+
+### Miscellaneous
+- **Composer**: Bump adhocore/cli version (Jitendra Adhikari) [_26f4b38_](https://github.com/adhocore/php-cli-syntax/commit/26f4b38)
+- Cleanup (Jitendra Adhikari) [_90ca8c9_](https://github.com/adhocore/php-cli-syntax/commit/90ca8c9)
+
+### Documentations
+- Update programatic usage options (Jitendra Adhikari) [_2655e21_](https://github.com/adhocore/php-cli-syntax/commit/2655e21)
+- Update options, example and screenshot (Jitendra Adhikari) [_dca4f92_](https://github.com/adhocore/php-cli-syntax/commit/dca4f92)
+
+
 ## [0.3.1](https://github.com/adhocore/php-cli-syntax/releases/tag/0.3.1) (2019-12-31)
 
 ### Miscellaneous
