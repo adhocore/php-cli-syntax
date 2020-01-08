@@ -100,10 +100,15 @@ use Ahc\CliSyntax\Highlighter;
 // PHP code
 echo new Highlighter('<?php echo "Hello world!";');
 // OR
-echo (new Highlighter)->highlight('<?php echo "Hello world!";');
+echo (new Highlighter)->highlight('<?php echo "Hello world!";', $options);
 
 // PHP file
-echo Highlighter::for('/path/to/file.php');
+echo Highlighter::for('/path/to/file.php', $options);
+
+// $options array is optional and can contain:
+[
+    'lineNo' => true, // bool
+];
 ```
 
 #### Export
@@ -112,7 +117,14 @@ echo Highlighter::for('/path/to/file.php');
 use Ahc\CliSyntax\Exporter;
 
 // PHP file
-Exporter::for('/path/to/file.php')->export('file.png');
+Exporter::for('/path/to/file.php')->export('file.png', $options);
+
+// $options array is optional and can contain:
+[
+    'lineNo' => true, // bool
+    'font'   => 'full/path/of/font.ttf', // str
+    'size'   => 'font size', // int
+];
 ```
 
 See [example usage](./example.php). Here's how the export looks like:
