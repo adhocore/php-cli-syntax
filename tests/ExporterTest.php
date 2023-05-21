@@ -36,6 +36,7 @@ class ExporterTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
+     *
      * @expectedExceptionMessage The output path doesnot exist.
      */
     public function testExportThrows()
@@ -64,6 +65,7 @@ class ExporterTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
+     *
      * @expectedExceptionMessage The given font doesnot exist.
      */
     public function testSetOptionsThrows()

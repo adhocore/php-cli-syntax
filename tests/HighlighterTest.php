@@ -45,6 +45,7 @@ class HighlighterTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
+     *
      * @expectedExceptionMessage The given file doesnot exist or is unreadable.
      */
     public function testHighlightFileThrows()
