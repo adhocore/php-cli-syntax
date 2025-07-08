@@ -77,14 +77,14 @@ class ClishCommand extends Command
         $this->doHighlight($code);
     }
 
-    protected function doHighlight(string $code = null)
+    protected function doHighlight(?string $code = null)
     {
         if (!$this->output || $this->echo) {
             $this->app()->io()->raw((new Highlighter)->highlight($code, ['lineNo' => $this->lineNo]));
         }
     }
 
-    protected function doExport(string $code = null)
+    protected function doExport(?string $code = null)
     {
         if (!$this->output) {
             return;

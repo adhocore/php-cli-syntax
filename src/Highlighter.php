@@ -23,7 +23,7 @@ class Highlighter extends Pretty
         return $this->highlight();
     }
 
-    public function highlight(string $code = null, array $options = []): string
+    public function highlight(?string $code = null, array $options = []): string
     {
         $this->setOptions($options);
 

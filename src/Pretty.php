@@ -33,7 +33,7 @@ abstract class Pretty
     /** @var bool Indicates if it has been already configured. */
     protected static $configured;
 
-    public function __construct(string $code = null)
+    public function __construct(?string $code = null)
     {
         $this->code = $code ?? '';
     }
@@ -67,7 +67,7 @@ abstract class Pretty
         }
     }
 
-    protected function parse(string $code = null)
+    protected function parse(?string $code = null)
     {
         $this->reset();
 
